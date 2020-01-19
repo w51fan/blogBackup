@@ -37,3 +37,27 @@ Hexo Admin可以直接复制图片粘贴，然后自动下载到source/images目
 
 ![upload successful](\images\pasted-2.png)
 
+多PC共同管理同一个站点
+有时候，我们可能会在多台PC共同管理我们的博客，比如公司电脑和家用电脑。但是使用hexo d部署blog时，会直接将原始的hexo代码转换生成静态的页面，并上传至master分支，这样一来，
+我们便无法在另一台电脑获得原始的代码再进行新文章发布。所以，我们需要新建一个hexo分支，来管理我们原始的hexo代码。
+
+$ git checkout -b hexo
+Switched to a new branch "hexo"
+
+$ git add .
+$ git commit -m "issue"
+$ git push origin hexo
+
+这个时候，我们就已经将原始代码push到远程的hexo分支啦～
+在另一台电脑下，将hexo分支的代码clone下来
+
+$ git clone -b hexo <remote_repo>
+
+使用hexo（确保电脑已安装hexo-cli），注意这里不需要再hexo init了，不然会覆盖掉之前的配置。
+
+$ cd yourname.github.io
+$ npm install
+...
+$ hexo s
+
+这样一来就可以实现多PC共同管理一个站点了～～
